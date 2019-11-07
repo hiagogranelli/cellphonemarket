@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify'
 
 import './Config/ReactotrtonConfig';
 
@@ -14,9 +15,10 @@ export default function src() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header/>
+        <Header />
         <Routes />
-        <GlobalStyle/>
+        <GlobalStyle />
+        <ToastContainer autoClose={3000} />
       </BrowserRouter>
     </Provider>
   );

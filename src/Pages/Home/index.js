@@ -32,7 +32,7 @@ class Home extends Component {
 
   render() {
     const { products } = this.state;
-    const { ammount } = this.props;
+    const { amount } = this.props;
 
     return (
       <ProductList>
@@ -47,7 +47,7 @@ class Home extends Component {
           >
             <div>
               <MdAddShoppingCart size={16} color="#fff" /> 
-              {ammount[product.id] || 0}
+              {amount[product.id] || 0}
             </div>
   
             <span>Adicionar ao carrinho</span>
@@ -60,10 +60,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  ammount: state.cart.reduce((ammount, product) => {
-    ammount[product.id] = product.ammount;
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
 
-    return ammount;
+    return amount;
   }, {}),
 });
 

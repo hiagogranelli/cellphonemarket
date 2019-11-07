@@ -7,13 +7,13 @@ import { formatPrice } from '../../Util/format';
 import * as CartActions from '../../Store/modules/cart/actions';
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ cart, total, removeFromCart, updateAmmount }) {
+function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
   function increment(product) {
-    updateAmmount(product.id, product.ammount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decrement(product) {
-    updateAmmount(product.id, product.ammount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   return (
@@ -46,7 +46,7 @@ function Cart({ cart, total, removeFromCart, updateAmmount }) {
                 <button type="button" onClick={() => decrement(product)}>
                   <MdRemoveCircleOutline size={20} color="#ff6b99" />
                 </button>
-                <input type="number" readOnly value={product.ammount}  />
+                <input type="number" readOnly value={product.amount}  />
                 <button type="button" onClick={() => increment(product)}>
                   <MdAddCircleOutline size={20} color="#ff6b99" />
                 </button>
@@ -82,10 +82,10 @@ function Cart({ cart, total, removeFromCart, updateAmmount }) {
 const mapStateToProps = state => ({
   cart: state.cart.map(product => ({
     ...product,
-    subTotal: formatPrice(product.price * product.ammount)
+    subTotal: formatPrice(product.price * product.amount)
   })),
   total: formatPrice(state.cart.reduce((total, product) => {
-    return total + product.price * product.ammount;
+    return total + product.price * product.amount;
   }, 0))
 });
 
